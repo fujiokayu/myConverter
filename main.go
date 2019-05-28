@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"myConverter/args"
 	"myConverter/walker"
@@ -20,5 +21,8 @@ func main() {
 		log.Fatal(err)
 	}
 
-	walker.Walk(folder)
+	ch := walker.Walk(folder)
+	for filePath := range ch {
+		fmt.Println(filePath)
+	}
 }
