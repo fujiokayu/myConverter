@@ -1,9 +1,9 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"myConverter/args"
+	"myConverter/walker"
 	"os"
 	"strings"
 )
@@ -20,5 +20,5 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Println(folder, "is Directory!")
+	walker.Walk(folder)
 }
