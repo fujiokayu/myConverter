@@ -1,9 +1,5 @@
 # myConverter
 
-## Features
-- This application can encrypt / decrypt files by using pass-phrase encryption.  
-- Encryption with AES CTR mode.
-
 ## Note of my learning
 - ディレクトリの再帰的な探索は [path/filepath.Walk](https://golang.org/pkg/path/filepath/#Walk) を使うのが一番近道だと思った。  
     - しかし、filepath.Walk 内で呼び出せる関数が [WalkFunc](https://golang.org/pkg/path/filepath/#WalkFunc) に限定されているようで、かつ WalkFunc の型が決まっていたので少しやり辛かった。
