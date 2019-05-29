@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"myConverter/args"
 	"myConverter/converter"
@@ -13,8 +12,6 @@ import (
 
 func execute(filePath string) {
 	ext := strings.ToLower(filepath.Ext(filePath))
-
-	fmt.Println(ext, "start")
 	switch ext {
 	case ".jpeg", ".jpg":
 		converter.J2P(filePath)
