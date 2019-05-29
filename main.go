@@ -4,10 +4,23 @@ import (
 	"fmt"
 	"log"
 	"myConverter/args"
+	"myConverter/converter"
 	"myConverter/walker"
 	"os"
+	"path/filepath"
 	"strings"
 )
+
+func execute(filePath string) {
+	ext := strings.ToLower(filepath.Ext(filePath))
+
+	fmt.Println(ext, "start")
+	switch ext {
+	case ".jpeg", ".jpg":
+		converter.J2P(filePath)
+	default:
+	}
+}
 
 func main() {
 	args := args.ParseArgs()
@@ -23,6 +36,6 @@ func main() {
 
 	ch := walker.Walk(folder)
 	for filePath := range ch {
-		fmt.Println(filePath)
+		execute(filePath)
 	}
 }
