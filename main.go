@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"myConverter/args"
 	"myConverter/converter"
@@ -10,13 +11,14 @@ import (
 	"strings"
 )
 
-func execute(filePath string) {
+func execute(filePath string, decodeType string, encodeType string) {
+
 	ext := strings.ToLower(filepath.Ext(filePath))
-	switch ext {
-	case ".jpeg", ".jpg":
-		converter.J2P(filePath)
-	default:
+	fmt.Println(ext, strings.ToLower("."+decodeType))
+	if ext == strings.ToLower("."+decodeType) {
+		converter.Convert(filePath, ext, encodeType)
 	}
+
 }
 
 func main() {
@@ -33,6 +35,6 @@ func main() {
 
 	ch := walker.Walk(folder)
 	for filePath := range ch {
-		execute(filePath)
+		execute(filePath, args.FileTypeFrom, args.FileTypeTo)
 	}
 }
