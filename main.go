@@ -1,11 +1,9 @@
 package main
 
 import (
-	"log"
 	"myConverter/args"
 	"myConverter/converter"
 	"myConverter/walker"
-	"os"
 	"path/filepath"
 	"strings"
 )
@@ -22,14 +20,6 @@ func execute(filePath string, decodeType string, encodeType string) {
 func main() {
 	args := args.ParseArgs()
 	folder := strings.Join(args.RootFolderName, " ")
-
-	info, err := os.Stat(folder)
-	if !info.IsDir() {
-		log.Fatal(err)
-	}
-	if err != nil {
-		log.Fatal(err)
-	}
 
 	ch := walker.Walk(folder)
 	for filePath := range ch {

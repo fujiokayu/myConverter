@@ -7,10 +7,22 @@ import (
 	"path/filepath"
 )
 
-//Walk :
-func Walk(rootPath string) chan string {
-	ch := make(chan string)
+// assertDir: 引数が有効なディレクトリか検証する
+func assertDir(path string) {
+	info, err := os.Stat(path)
+	if !info.IsDir() {
+		log.Fatal(err)
+	}
+	if err != nil {
+		log.Fatal(err)
+	}
+}
 
+//Walk :指定されたディレクトリを再帰的に操作し、見つかったファイルを chan で返す。
+func Walk(rootPath string) chan string {
+	assertDir(rootPath)
+
+	ch := make(chan string)
 	go func() {
 		err := filepath.Walk(rootPath, func(path string, info os.FileInfo, err error) error {
 			if err != nil {
