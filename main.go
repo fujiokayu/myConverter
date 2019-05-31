@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"myConverter/args"
 	"myConverter/converter"
@@ -11,14 +10,13 @@ import (
 	"strings"
 )
 
+// フォルダ探索によって見つかったファイルの拡張子が、decodeType と一致した場合に converter を起動する。
 func execute(filePath string, decodeType string, encodeType string) {
-
 	ext := strings.ToLower(filepath.Ext(filePath))
-	fmt.Println(ext, strings.ToLower("."+decodeType))
+
 	if ext == strings.ToLower("."+decodeType) {
 		converter.Convert(filePath, ext, encodeType)
 	}
-
 }
 
 func main() {
@@ -35,6 +33,6 @@ func main() {
 
 	ch := walker.Walk(folder)
 	for filePath := range ch {
-		execute(filePath, args.FileTypeFrom, args.FileTypeTo)
+		execute(filePath, args.DecodeType, args.EncodeType)
 	}
 }
