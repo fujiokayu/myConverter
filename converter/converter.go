@@ -12,18 +12,7 @@ import (
 	"strings"
 )
 
-type imageFile struct {
-	filePath     string
-	fileBaseName string
-	fileExt      string
-}
-
-func newImageFile(filePath string) *imageFile {
-	newFile := &imageFile{}
-
-	return newFile
-}
-
+//dec: Decode filePath file
 func dec(filePath string, decodeType string) (image.Image, error) {
 	reader, err := os.Open(filePath)
 	if err != nil {
