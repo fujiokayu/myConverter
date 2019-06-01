@@ -21,11 +21,11 @@ func dec(filePath string, decodeType string) (image.Image, error) {
 	defer reader.Close()
 
 	switch decodeType {
-	case ".gif":
+	case "gif":
 		return gif.Decode(reader)
-	case ".jpeg", ".jpg":
+	case "jpeg", "jpg":
 		return jpeg.Decode(reader)
-	case ".png":
+	case "png":
 		return png.Decode(reader)
 	}
 	return nil, nil
@@ -39,12 +39,12 @@ func enc(filePath string, encodeType string, m image.Image) error {
 	defer f.Close()
 
 	switch encodeType {
-	case ".gif":
-		return gif.Encode(f, m, nil)
-	case ".jpeg", ".jpg":
-		return jpeg.Encode(f, m, nil)
-	case ".png":
-		return png.Encode(f, m)
+	case "gif":
+		return gif.Encode(writer, m, nil)
+	case "jpeg", "jpg":
+		return jpeg.Encode(writer, m, nil)
+	case "png":
+		return png.Encode(writer, m)
 	}
 	return nil
 }
