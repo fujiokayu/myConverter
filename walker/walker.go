@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 )
 
-// assertDir: 引数が有効なディレクトリか検証する
+// assertDir: 引数の文字列が有効なディレクトリか検証する
 func assertDir(path string) {
 	info, err := os.Stat(path)
 	if !info.IsDir() {
@@ -18,7 +18,7 @@ func assertDir(path string) {
 	}
 }
 
-//Walk :指定されたディレクトリを再帰的に操作し、見つかったファイルを chan で返す。
+// Walk :指定されたディレクトリを再帰的に操作し、見つかったファイルをチャネルで返す。
 func Walk(rootPath string) chan string {
 	assertDir(rootPath)
 

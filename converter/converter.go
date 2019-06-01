@@ -28,15 +28,16 @@ func dec(filePath string, decodeType string) (image.Image, error) {
 	case "png":
 		return png.Decode(reader)
 	}
-	return nil, nil
+	return nil, err
 }
 
+//enc: Encode m to encodeType
 func enc(filePath string, encodeType string, m image.Image) error {
-	f, err := os.Create(strings.TrimSuffix(filePath, path.Ext(filePath)) + "." + encodeType)
+	writer, err := os.Create(strings.TrimSuffix(filePath, path.Ext(filePath)) + "." + encodeType)
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer f.Close()
+	defer writer.Close()
 
 	switch encodeType {
 	case "gif":
@@ -49,9 +50,8 @@ func enc(filePath string, encodeType string, m image.Image) error {
 	return nil
 }
 
-//Convert : convert Jpeg file to PNG
+//Convert : convert decodeType file to encodeType file
 func Convert(filePath string, decodeType string, encodeType string) {
-
 	fmt.Println("Converting", filePath)
 
 	m, err := dec(filePath, decodeType)

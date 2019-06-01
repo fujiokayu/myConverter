@@ -14,7 +14,6 @@ type Args struct {
 
 // ParseArgs : constructor of struct "args"
 func ParseArgs() *Args {
-	// Todo: file type check
 	arg1 := flag.String("from", "jpg", "original file type to convert")
 	arg2 := flag.String("to", "png", "file type you want to convert")
 
@@ -26,6 +25,7 @@ func ParseArgs() *Args {
 		log.Fatal("have to choose directory to convert")
 	}
 
+	//
 	newArgs := &Args{
 		DecodeType:     *arg1,
 		EncodeType:     *arg2,
