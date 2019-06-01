@@ -1,3 +1,15 @@
+/*
+Package converter
+
+converter は特定の画像形式のファイルを変換するためのパッケージです。
+
+How to use
+
+string 型の3つの引数を指定して Convert 関数を呼び出してください。
+ Convert(filePath string, decodeType string, encodeType string)
+
+利用できるファイル形式は gif、jpg(jpeg)、png だけです。
+*/
 package converter
 
 import (
