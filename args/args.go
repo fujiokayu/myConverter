@@ -25,7 +25,6 @@ func ParseArgs() *Args {
 		log.Fatal("have to choose directory to convert")
 	}
 
-	//
 	newArgs := &Args{
 		DecodeType:     *arg1,
 		EncodeType:     *arg2,
