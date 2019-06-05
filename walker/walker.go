@@ -26,7 +26,8 @@ func Walk(rootPath string) (chan string, error) {
 		return ch, err
 	}
 
-	err = func() error {
+	// Todo: Add error handling
+	go func() {
 		err = filepath.Walk(rootPath, func(path string, info os.FileInfo, err error) error {
 			if err != nil {
 				return err
@@ -37,7 +38,6 @@ func Walk(rootPath string) (chan string, error) {
 			return nil
 		})
 		defer close(ch)
-		return err
 	}()
 	return ch, err
 }
