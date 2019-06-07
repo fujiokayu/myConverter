@@ -1,5 +1,7 @@
 # myConverter
 
+This tool was made for study of Go.
+
 ## how to build
 ```
 make
